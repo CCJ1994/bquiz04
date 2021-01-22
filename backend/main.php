@@ -1,5 +1,5 @@
 <h2 class="ct">管理者管理</h2>
-<div class="ct"><button onclick="">新增管理者</button></div>
+<div class="ct"><button onclick="lof('?do=add_admin')">新增管理者</button></div>
 <table class="all">
   <tr class="tt ct">
     <td>帳號</td>
@@ -12,7 +12,7 @@
   ?>
   <tr class="pp">
     <td class="ct"><?=$admin['acc'];?></td>
-    <td class="ct"><?=str_repeat("*",strlen($admin['acc']));?></td>
+    <td class="ct"><?=str_repeat("*",strlen($admin['pw']));?></td>
     <td class="ct">
       <?php
         if($admin['acc']=='admin'){

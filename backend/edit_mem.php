@@ -11,7 +11,7 @@ $mem=$Mem->find($_GET['id']);
   <tr>
     <td class="ct tt">密碼</td>
     <td class="pp">
-      <?=str_repeat("*",strlen($mem['acc']));?>
+      <?=str_repeat("*",strlen($mem['pw']));?>
     </td>
   </tr>
   
