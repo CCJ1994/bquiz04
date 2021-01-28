@@ -9,13 +9,13 @@ $goods=$Goods->find($_GET['id']);
         <tr>
             <td class="tt">所屬大分類</td>
             <td class="pp">
-                <select name="big" id="big" onchange="getBig()"></select>
+                <select name="big" id="big" onchange="getMids()"></select>
             </td>
         </tr>
         <tr>
             <td class="tt">所屬中分類</td>
             <td class="pp">
-                <select name="mid" id="mid" ></select>
+                <select name="mid" id="mid"></select>
             </td>
         </tr>
         <tr>
@@ -56,24 +56,26 @@ $goods=$Goods->find($_GET['id']);
 </form>
 
 <script>
-getBig();
-
-function getBig(){
+getBigs();
+let first=true;
+function getBigs(){
         $.get("api/get_big.php",function(bigs){
             $("#big").html(bigs)
             //利用jquery找到符合商品大分類的選項,並設為選中的狀態
             $("#big option[value='<?=$goods['big'];?>']").prop('selected',true);
-            getMid();
+            getMids();
         })
 }
 
-function getMid(){
+function getMids(){
     $.get("api/get_mid.php",{bigId:$("#big").val()},function(mids){
-      // console.log(mids);
         $("#mid").html(mids)
         //利用jquery找到符合商品中分類的選項,並設為選中的狀態
-        $("#mid option[value='<?=$goods['mid'];?>']").prop('selected',true);
-        
+        if(first){
+            $("#mid option[value='<?=$goods['mid'];?>']").prop('selected',true);
+
+        }
+        first=false
     })
 }
 

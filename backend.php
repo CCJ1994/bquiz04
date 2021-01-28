@@ -1,12 +1,12 @@
-<?php 
-include_once "base.php" ;
+<?php include_once "base.php";
+
 if(empty($_SESSION['admin'])){
-  to ("index.php");
-  exit();
+    to("index.php");
+    exit();
 }else{
-  $admin=$Admin->find(['acc'=>$_SESSION['admin']]);
-  $pr=unserialize($admin['pr']);
-}
+    $admin=$Admin->find(['acc'=>$_SESSION['admin']]);
+    $pr=unserialize($admin['pr']);
+};
 ?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -34,32 +34,31 @@ if(empty($_SESSION['admin'])){
     <div id="left" class="ct">
       <div style="min-height:400px;">
         <a href="?do=main">管理權限設置</a>
-        <?=(in_array(1,$pr))?"<a href='?do=th'>商品分類與管理</a>":'';?>
+        <?=(in_array(1,$pr))?"<a href='?do=th'>商品分類與管理</a>":''; ?>
+        <?=(in_array(2,$pr))?"<a href='?do=order'>訂單管理</a>":''; ?>
+        <?=(in_array(3,$pr))?"<a href='?do=mem'>會員管理</a>":'' ?>
+        <?=(in_array(4,$pr))?"<a href='?do=bot' >頁尾版權管理</a>":'' ?>
+        <?=(in_array(5,$pr))?"<a href='?do=main' >最新消息管理</a>":'' ?>
 
-        <?=(in_array(2,$pr))?"<a href='?do=order'>訂單管理</a>":'';?>
-          
-        <?=(in_array(3,$pr))?"<a href='?do=mem'>會員管理</a>":'';?>
-          
-        <?=(in_array(4,$pr))?"<a href='?do=bot'>頁尾版權管理</a>":'';?>
-          
-        <?=(in_array(5,$pr))?"<a href='?do=main'>最新消息管理</a>":'';?>
-          
         <a href="javascript:lof('api/logout.php?do=admin')" style="color:#f00;">登出</a>
       </div>
     </div>
     <div id="right">
-		<?php
-        $do=$_GET['do']??'main';
-        $file="backend/".$do.".php";
-        if(file_exists($file)){
-          include $file;
-        }else{
-          echo "檔案不存在";
-        }
-    ?>
+      <?php
+                $do=$_GET['do']??'main';
+                $file="backend/".$do.".php";
+                if(file_exists($file)){
+                    include $file; 
+                }else{
+                    echo "檔案不存在";
+                }
+
+
+
+        ?>
     </div>
     <div id="bottom" style="line-height:70px; color:#FFF; background:url(icon/bot.png);" class="ct">
-    <?=$Bottom->find(1)['bottom'];?></div>
+      <?=$Bottom->find(1)['bottom'];?> </div>
   </div>
 
 </body>
