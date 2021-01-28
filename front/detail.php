@@ -10,18 +10,21 @@ $goods=$Goods->find($_GET['id']);
       </a>
     </div>
     <div style="width:60%;vertical-align:top;">
-      <div class="tt ct"><?=$goods['name'];?></div>
-      <div>價錢:<?=$goods['price'];?>
+      <div>
+      分類:<?=$Type->find($goods['big'])['name'];?>><?=$Type->find($goods['mid'])['name'];?>
       </div>
-      <div>規格:<?=$goods['spec'];?></div>
-      <div>簡介<?=mb_substr($goods['intro'],0,25,'utf8');?></div>
+      <div>編號:<?=$goods['num'];?>
+      <div>價錢:<?=$goods['price'];?></div>
+      <div>簡介<?=nl2br($goods['intro']);?></div>
+      <div>庫存量:<?=$goods['quota'];?></div>
     </div>
+  </div>
   </div>
   <div class="tt ct">
     <form action="?" method="get">
       購買數量:
       <input type="hidden" name="do" value="buycart">
-      <input type="hidden" name="id" value="<?=$goods['id'];?>">
+      <input type="hidden" name="goods" value="<?=$goods['id'];?>">
       <input type="number" name="qt" value="1">
       <input type="submit" value="" style="background:url('icon/0402.jpg');width:60px;height:20px;">
     </form>
