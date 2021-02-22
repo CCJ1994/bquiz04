@@ -30,7 +30,7 @@ include_once "base.php";
         <a href="?do=th">商品分類與管理</a>
         <a href="?do=order">訂單管理</a>
         <a href="?do=mem">會員管理</a>
-        <a href="?do=bot">頁尾版權管理</a>
+        <a href="?do=bottom">頁尾版權管理</a>
         <a href="?do=news">最新消息管理</a>
         <a href="?do=logout" style="color:#f00;">登出</a>
       </div>
@@ -47,7 +47,7 @@ include_once "base.php";
 		?>
     </div>
     <div id="bottom" style="line-height:70px; color:#FFF; background:url(icon/bot.png);" class="ct">
-      頁尾版權 : </div>
+      <?=$Bottom->find(1)['bottom'];?></div>
   </div>
 
 </body>
