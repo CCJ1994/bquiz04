@@ -1,8 +1,3 @@
-<h3>第一次購物</h3>
-<a href="?do=reg">
-<img src="./icon/0413.jpg" alt="">
-</a>
-<h3>會員登入</h3>
 <form action="" method="">
   <table class="all " id="head">
       <tr>
@@ -27,7 +22,7 @@
         <input type="text" id="ans" name="ans" value=""></td>
       </tr>
     <tr><td colspan="2" class="ct">
-    <input type="button" value="確認" onclick="login('mem')">
+    <input type="button" value="確認" onclick="login('admin')">
     </td></tr>
   </table>
 </form>

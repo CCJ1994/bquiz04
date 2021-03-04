@@ -27,11 +27,21 @@ include_once "base.php";
         <a href="?do=news">最新消息</a> |
         <a href="?do=look">購物流程</a> |
         <a href="?do=buycart">購物車</a> |
+        <?php 
+        if(empty($_SESSION['mem'])){ ?>
         <a href="?do=login">會員登入</a> |
+        <?php }else{ ?>
+        <a href="api/logout.php?do=mem">登出</a> |
+        <?php  }
+        if(empty($_SESSION['admin'])){ ?>
         <a href="?do=admin">管理登入</a>
+        <?php }else{ ?>
+        <a href="backend.php">返回管理</a>
+        <?php  }
+        ?>
       </div>
       <marquee behavior="" direction="">年終特賣會開跑了&nbsp;&nbsp;&nbsp;情人節特惠活動</marquee>
-      
+
     </div>
     <div id="left" class="ct">
       <div style="min-height:400px;">
@@ -43,7 +53,7 @@ include_once "base.php";
       </span>
     </div>
     <div id="right" style="width:70%;">
-    <?php
+      <?php
     $do=(isset($_GET['do']))?$_GET['do']:"main";
     $file="./front/".$do.".php";
     if(file_exists($file)){
